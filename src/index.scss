@@ -1,0 +1,81 @@
+// @import 'assets/styles/libs/normalize';
+// @import 'assets/styles/libs/font';
+
+* {
+    //font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.game-title {
+    margin-top: 5vh;
+    font-size: 2rem;
+}
+.buttons-init {
+    display: flex;
+    flex: 0 1 auto;
+    gap: 10px;
+    .btn {
+        display: block;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+}
+
+.timer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    &__number {
+        font-size: 1.2rem;
+    }
+}
+
+.game-field {
+    position: relative;
+    width: 600px;
+    aspect-ratio: 1;  
+    background-color: rgb(202, 202, 202);
+    border: 1px solid black;
+
+    @media (max-width: 768px) {
+        width: 80%;
+    }
+}
+
+.card {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    background-color: #fff;
+    border: 0.5px solid blue;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.other-sizes {
+    display: flex;
+    gap: 5px;
+    &__size {
+        display: block;
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.task-link {
+    text-decoration: none;
+}
