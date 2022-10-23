@@ -1,15 +1,19 @@
-// @import 'assets/styles/libs/normalize';
-// @import 'assets/styles/libs/font';
+$green-color: #4B9200;
+$orange-color: #FE9013;
+$gray-color: #767474;
+$yellow_color: #FFEE2E;
+
 
 * {
-    //font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 .wrapper {
-    max-height: 100vh;
+    max-width: 550px;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,10 +21,25 @@
 }
 
 .game-title {
-    margin-top: 5vh;
-    font-size: 2rem;
+    position: relative;
+    margin-top: 2vh;
+    font-size: 2.5rem;
+    .speaker {
+        position: relative;
+        display: inline-block;
+        margin-left: 10px;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        background: url('assets/speaker.svg') center center/cover no-repeat;
+        &_off {
+            background: url('assets/speaker-off.svg') center center/cover no-repeat;
+        }
+    }
 }
+
 .buttons-init {
+    margin-top: 2vh;
     display: flex;
     flex: 0 1 auto;
     gap: 10px;
@@ -28,10 +47,22 @@
         display: block;
         padding: 5px 10px;
         cursor: pointer;
+        font-size: 1.5rem;
+        border: 1px solid $orange-color;
+        border-radius: 5px;
+        &:hover {
+            background-color: $orange-color;
+            color: #fff;
+        }
+        @media (max-width: 400px) {
+            font-size: 1rem;
+        }
     }
 }
 
 .timer {
+    margin-top: 10px;
+    font-size: 1.2rem;
     display: flex;
     gap: 10px;
     align-items: center;
@@ -42,40 +73,100 @@
 
 .game-field {
     position: relative;
-    width: 600px;
+    margin: 10px auto;
+    width: 100%;
     aspect-ratio: 1;  
-    background-color: rgb(202, 202, 202);
-    border: 1px solid black;
-
-    @media (max-width: 768px) {
-        width: 80%;
-    }
+    background: linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+    opacity: 0.8;
+    border: 1px solid $yellow_color;
+    border-radius: 15px;
+    user-select: none;
 }
 
 .card {
     position: absolute;
+    left: 0;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     aspect-ratio: 1;
-    background-color: #fff;
-    border: 0.5px solid blue;
+    text-align: center;
+    flex: 0 0 auto;
+    background-color: $orange-color;
+    border: 0.5px solid $yellow_color;
+    border-radius: 15px;
     font-size: 2.5rem;
+    font-weight: 700;
+    color: #000;
     cursor: pointer;
-    transition: all 0.3s;
-}
-
-.other-sizes {
-    display: flex;
-    gap: 5px;
-    &__size {
-        display: block;
-        color: blue;
-        text-decoration: underline;
-        cursor: pointer;
+    transition: all 0.4s;
+    @media (max-width: 400px) {
+        font-size: 2rem;
     }
 }
 
+.frame-game {
+    display: inline-block;
+}
+
+.game-size {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 20px;
+    max-width: 450px;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    input {
+        display: none;
+    }
+    label {
+        position: relative;
+        cursor: pointer;
+        &::before {
+            content: attr(data-debt-size);
+        }
+    }
+    input:checked {
+        position: relative;
+        + label {
+            color: #fff;
+        }
+        + label::after {
+            position: absolute;
+            content: "";
+            background-color: $orange-color;
+            height: 25px;
+            width: 40px;
+            left: -7px;
+            cursor: pointer;
+            z-index: -1;
+        }
+    }
+}
+
+
 .task-link {
+    margin-top: 20px;
     text-decoration: none;
 }
+
+.win {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+    background-color: #fff;
+    border: 2px solid $orange-color;
+    border-radius: 10px;
+    width: 60%;
+    padding: 20px 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    z-index: 2;
+}
+
